@@ -111,6 +111,10 @@
       <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <StateMachine InitialState="{x:Reference __ReferenceID1}" DisplayName="ME_SaveDataExcel" sap:VirtualizedContainerService.HintSize="1179.2,385.6" sap2010:WorkflowViewState.IdRef="StateMachine_1">
@@ -123,15 +127,15 @@
         <av:PointCollection x:Key="ConnectorLocation">294.8,52.1 294.8,152.28 213.60000000000002,152.28</av:PointCollection>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <State x:Name="__ReferenceID1" DisplayName="Filter Table" sap:VirtualizedContainerService.HintSize="641.6,3614.4" sap2010:WorkflowViewState.IdRef="State_1">
+    <State x:Name="__ReferenceID1" DisplayName="Filter Table" sap:VirtualizedContainerService.HintSize="612.8,3588" sap2010:WorkflowViewState.IdRef="State_1">
       <State.Entry>
-        <Sequence DisplayName="SaveDataExcel" sap:VirtualizedContainerService.HintSize="596.8,3193.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="SaveDataExcel" sap:VirtualizedContainerService.HintSize="568,3167.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:FilterDataTable DataTable="[GlobalVariablesNamespace.GlobalVariables.vTblExtractData]" DisplayName="Filtrar tabla de datos" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="563.2,194.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[GlobalVariablesNamespace.GlobalVariables.vTblExtractData]" SelectColumnsMode="Remove">
+          <ui:FilterDataTable DataTable="[GlobalVariablesNamespace.GlobalVariables.vTblExtractData]" DisplayName="Filtrar tabla de datos" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="534.4,194.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[GlobalVariablesNamespace.GlobalVariables.vTblExtractData]" SelectColumnsMode="Remove">
             <ui:FilterDataTable.Filters>
               <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                 <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
@@ -150,7 +154,7 @@
               </scg:List>
             </ui:FilterDataTable.SelectColumns>
           </ui:FilterDataTable>
-          <ui:FilterDataTable DataTable="[GlobalVariablesNamespace.GlobalVariables.vTblExtractData]" DisplayName="Filtrar tabla de datos" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="563.2,194.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[GlobalVariablesNamespace.GlobalVariables.vTblExtractData]" SelectColumnsMode="Remove">
+          <ui:FilterDataTable DataTable="[GlobalVariablesNamespace.GlobalVariables.vTblExtractData]" DisplayName="Filtrar tabla de datos" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="534.4,194.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[GlobalVariablesNamespace.GlobalVariables.vTblExtractData]" SelectColumnsMode="Remove">
             <ui:FilterDataTable.Filters>
               <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                 <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
@@ -169,7 +173,7 @@
               </scg:List>
             </ui:FilterDataTable.SelectColumns>
           </ui:FilterDataTable>
-          <ui:FilterDataTable DataTable="[GlobalVariablesNamespace.GlobalVariables.vTblExtractData]" DisplayName="Filtrar tabla de datos" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="563.2,194.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_3" OutputDataTable="[GlobalVariablesNamespace.GlobalVariables.vTblExtractData]" SelectColumnsMode="Remove">
+          <ui:FilterDataTable DataTable="[GlobalVariablesNamespace.GlobalVariables.vTblExtractData]" DisplayName="Filtrar tabla de datos" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="534.4,194.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_3" OutputDataTable="[GlobalVariablesNamespace.GlobalVariables.vTblExtractData]" SelectColumnsMode="Remove">
             <ui:FilterDataTable.Filters>
               <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                 <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
@@ -188,7 +192,7 @@
               </scg:List>
             </ui:FilterDataTable.SelectColumns>
           </ui:FilterDataTable>
-          <ui:OutputDataTable Text="{x:Null}" DataTable="[GlobalVariablesNamespace.GlobalVariables.vTblExtractData]" DisplayName="Tabla de datos de salida como texto" sap:VirtualizedContainerService.HintSize="563.2,112.8" sap2010:WorkflowViewState.IdRef="OutputDataTable_1">
+          <ui:OutputDataTable DataTable="[GlobalVariablesNamespace.GlobalVariables.vTblExtractData]" DisplayName="Tabla de datos de salida como texto" sap:VirtualizedContainerService.HintSize="534.4,112.8" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="{x:Null}">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -196,7 +200,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:OutputDataTable>
-          <ui:AppendWriteCsvFile PathResource="{x:Null}" AddHeaders="False" CsvAction="Write" DataTable="[GlobalVariablesNamespace.GlobalVariables.vTblExtractData]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Escribir CSV" FilePath="[&quot;Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.csv&quot;]" sap:VirtualizedContainerService.HintSize="563.2,236" sap2010:WorkflowViewState.IdRef="AppendWriteCsvFile_1" ShouldQuote="True">
+          <ui:AppendWriteCsvFile AddHeaders="False" CsvAction="Write" DataTable="[GlobalVariablesNamespace.GlobalVariables.vTblExtractData]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Escribir CSV" Encoding="{x:Null}" FilePath="[System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.csv&quot;)]" sap:VirtualizedContainerService.HintSize="534.4,236" sap2010:WorkflowViewState.IdRef="AppendWriteCsvFile_1" PathResource="{x:Null}" ShouldQuote="True">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -204,7 +208,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:AppendWriteCsvFile>
-          <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="563.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="534.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[vBoolGenerateExcel]</OutArgument>
             </Assign.To>
@@ -212,26 +216,26 @@
               <InArgument x:TypeArguments="x:Boolean">True</InArgument>
             </Assign.Value>
           </Assign>
-          <ueab:SequenceX DisplayName="Ámbito del proceso de Excel único" sap:VirtualizedContainerService.HintSize="563.2,2088" sap2010:WorkflowViewState.IdRef="SequenceX_4">
+          <ueab:SequenceX DisplayName="Ámbito del proceso de Excel único" sap:VirtualizedContainerService.HintSize="534.4,2061.6" sap2010:WorkflowViewState.IdRef="SequenceX_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Utilice el archivo de Excel" sap:VirtualizedContainerService.HintSize="529.6,702.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_4" ResizeWindow="None" TemplatePath="[&quot;Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.xlsx&quot;]" UseTemplate="True" WorkbookPath="[&quot;Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.xlsx&quot;]">
+            <ueab:ExcelApplicationCard ReadFormatting="{x:Null}" DisplayName="Utilice el archivo de Excel" EditPassword="{x:Null}" sap:VirtualizedContainerService.HintSize="500.8,676" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_4" Password="{x:Null}" ResizeWindow="None" TemplatePath="[System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.xlsx&quot;)]" UseTemplate="True" WorkbookPath="[System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.xlsx&quot;)]">
               <ueab:ExcelApplicationCard.Body>
                 <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="496,377.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <Sequence DisplayName="Hacer" sap:VirtualizedContainerService.HintSize="467.2,351.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:ReadCsvFile PathResource="{x:Null}" DataTable="[Excel.Sheet(&quot;Hoja1&quot;).Range(&quot;A2&quot;).DataTableOutValue]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Leer CSV" FilePath="[&quot;Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.csv&quot;]" sap:VirtualizedContainerService.HintSize="433.6,187.2" sap2010:WorkflowViewState.IdRef="ReadCsvFile_4" />
-                    <ui:DeleteFileX DisplayName="Eliminar archivo" sap:VirtualizedContainerService.HintSize="433.6,104" sap2010:WorkflowViewState.IdRef="DeleteFileX_4" Path="[&quot;..\UiPath_RPA_JaelaNoriega\Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.csv&quot;]" />
+                    <ui:ReadCsvFile DataTable="[Excel.Sheet(&quot;Hoja1&quot;).Range(&quot;A2&quot;).DataTableOutValue]" Delimitator="Comma" DelimitatorForViewModel="Comma" DisplayName="Leer CSV" Encoding="{x:Null}" FilePath="[System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.csv&quot;)]" sap:VirtualizedContainerService.HintSize="433.6,187.2" sap2010:WorkflowViewState.IdRef="ReadCsvFile_4" IgnoreQuotes="{x:Null}" PathResource="{x:Null}" />
+                    <ui:DeleteFileX DisplayName="Eliminar archivo" sap:VirtualizedContainerService.HintSize="433.6,104" sap2010:WorkflowViewState.IdRef="DeleteFileX_4" Path="[System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.csv&quot;)]" />
                   </Sequence>
                 </ActivityAction>
               </ueab:ExcelApplicationCard.Body>
@@ -242,11 +246,11 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ueab:ExcelApplicationCard>
-            <ui:WriteCell Cell="A1" DisplayName="Escribir libro de celda" sap:VirtualizedContainerService.HintSize="529.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_18" SheetName="Hoja1" Text="Número Telefónico" WorkbookPath="[&quot;Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.xlsx&quot;]" />
-            <ui:WriteCell Cell="B1" DisplayName="Escribir libro de celda" sap:VirtualizedContainerService.HintSize="529.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_19" SheetName="Hoja1" Text="Nombre del Propietario" WorkbookPath="[&quot;Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.xlsx&quot;]" />
-            <ui:WriteCell Cell="C1" DisplayName="Escribir libro de celda" sap:VirtualizedContainerService.HintSize="529.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_20" SheetName="Hoja1" Text="Dirección" WorkbookPath="[&quot;Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.xlsx&quot;]" />
-            <ui:WriteCell Cell="D1" DisplayName="Escribir libro de celda" sap:VirtualizedContainerService.HintSize="529.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_21" SheetName="Hoja1" Text="Localidad" WorkbookPath="[&quot;Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.xlsx&quot;]" />
-            <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Utilice el archivo de Excel" sap:VirtualizedContainerService.HintSize="529.6,710.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_5" ResizeWindow="None" TemplatePath="[&quot;Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.xlsx&quot;]" UseTemplate="True" WorkbookPath="[&quot;Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.xlsx&quot;]">
+            <ui:WriteCell Cell="A1" DisplayName="Escribir libro de celda" sap:VirtualizedContainerService.HintSize="500.8,148" sap2010:WorkflowViewState.IdRef="WriteCell_18" Password="{x:Null}" SheetName="Hoja1" Text="Número Telefónico" WorkbookPath="[System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.xlsx&quot;)]" />
+            <ui:WriteCell Cell="B1" DisplayName="Escribir libro de celda" sap:VirtualizedContainerService.HintSize="500.8,148" sap2010:WorkflowViewState.IdRef="WriteCell_19" Password="{x:Null}" SheetName="Hoja1" Text="Nombre del Propietario" WorkbookPath="[System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.xlsx&quot;)]" />
+            <ui:WriteCell Cell="C1" DisplayName="Escribir libro de celda" sap:VirtualizedContainerService.HintSize="500.8,148" sap2010:WorkflowViewState.IdRef="WriteCell_20" Password="{x:Null}" SheetName="Hoja1" Text="Dirección" WorkbookPath="[System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.xlsx&quot;)]" />
+            <ui:WriteCell Cell="D1" DisplayName="Escribir libro de celda" sap:VirtualizedContainerService.HintSize="500.8,148" sap2010:WorkflowViewState.IdRef="WriteCell_21" Password="{x:Null}" SheetName="Hoja1" Text="Localidad" WorkbookPath="[System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.xlsx&quot;)]" />
+            <ueab:ExcelApplicationCard ReadFormatting="{x:Null}" DisplayName="Utilice el archivo de Excel" EditPassword="{x:Null}" sap:VirtualizedContainerService.HintSize="500.8,710.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_5" Password="{x:Null}" ResizeWindow="None" TemplatePath="[System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.xlsx&quot;)]" UseTemplate="True" WorkbookPath="[System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;Contactos&quot; &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; &quot;.xlsx&quot;)]">
               <ueab:ExcelApplicationCard.Body>
                 <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                   <ActivityAction.Argument>
@@ -258,7 +262,7 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ueab:FindFirstLastDataRowX FirstRowIndex="{x:Null}" BlankRowsToSkip="1" ColumnName="Número Telefónico" ConfigureLastRowAs="LastPopulatedRow" DisplayName="Buscar la primera/última fila de datos" FirstRowOffset="0" HasHeaders="True" sap:VirtualizedContainerService.HintSize="433.6,334.4" sap2010:WorkflowViewState.IdRef="FindFirstLastDataRowX_2" LastRowIndex="[vIntGetTotalRows]" LastRowOffset="0" Range="[Excel.Sheet(&quot;Hoja1&quot;)]" VisibleRowsOnly="True" />
+                    <ueab:FindFirstLastDataRowX BlankRowsToSkip="1" ColumnName="Número Telefónico" ConfigureLastRowAs="LastPopulatedRow" DisplayName="Buscar la primera/última fila de datos" FirstRowIndex="{x:Null}" FirstRowOffset="0" HasHeaders="True" sap:VirtualizedContainerService.HintSize="433.6,334.4" sap2010:WorkflowViewState.IdRef="FindFirstLastDataRowX_2" LastRowIndex="[vIntGetTotalRows]" LastRowOffset="0" Range="[Excel.Sheet(&quot;Hoja1&quot;)]" VisibleRowsOnly="True" />
                   </Sequence>
                 </ActivityAction>
               </ueab:ExcelApplicationCard.Body>
@@ -280,7 +284,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <State.Exit>
-        <ui:LogMessage DisplayName="Registrar mensaje" sap:VirtualizedContainerService.HintSize="596.8,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Almacena la información en un archivo de Excel.&quot;]" />
+        <ui:LogMessage DisplayName="Registrar mensaje" sap:VirtualizedContainerService.HintSize="568,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Almacena la información en un archivo de Excel.&quot;]" />
       </State.Exit>
       <State.Transitions>
         <Transition DisplayName="Error" sap:VirtualizedContainerService.HintSize="448.8,490.4" sap2010:WorkflowViewState.IdRef="Transition_3">

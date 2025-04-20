@@ -125,6 +125,10 @@
       <AssemblyReference>System.CodeDom</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <StateMachine InitialState="{x:Reference __ReferenceID1}" DisplayName="ME_SendEmail" sap:VirtualizedContainerService.HintSize="1179.2,385.6" sap2010:WorkflowViewState.IdRef="StateMachine_1">
@@ -221,7 +225,7 @@
                         <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Gmail]" Body="[&quot;Estimad@ usuari@,&quot; &amp; vbCrLf &amp; vbCrLf &amp; &quot;A continuación, adjunto el archivo con la información obtenida durante la consulta.&quot; &amp; vbCrLf &amp; &quot;Total Contactos: &quot; &amp; (vIntGetTotalRows - 1) &amp; vbCrLf &amp; vbCrLf &amp; &quot;Saludos,&quot; &amp; vbCrLf &amp; &quot;Botsito UiPath&quot;]" BodyType="Text" DisplayName="Enviar correo electrónico" sap:VirtualizedContainerService.HintSize="433.6,420.8" sap2010:WorkflowViewState.IdRef="SendMailX_3" Importance="Normal" IsDraft="False" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="Resultado - Guía CNT" To="[vStrEmail]" UseDocumentAsBody="False">
                           <umab:SendMailX.Files>
                             <scg:List x:TypeArguments="InArgument(x:String)" Capacity="1">
-                              <InArgument x:TypeArguments="x:String">["Contactos" &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; ".xlsx"]</InArgument>
+                              <InArgument x:TypeArguments="x:String">[System.IO.Path.Combine(System.IO.Directory.GetCurrentDirectory(), "Contactos" &amp; GlobalVariablesNamespace.GlobalVariables.vStrLastName &amp; ".xlsx")]</InArgument>
                             </scg:List>
                           </umab:SendMailX.Files>
                           <umab:SendMailX.HtmlBodyFromFile>
